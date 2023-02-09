@@ -1,12 +1,19 @@
+import { LazyExoticComponent } from 'react';
+import { ShoppingPage }  from '../02-component-patter/pages/ShoppingPage'
+import { About } from '../components/About';
+import { Users } from '../components/Users';
+
+type JSXComponent = () => JSX.Element;
 interface Route {
     to:string;
     path:string;
+    Component: JSXComponent | LazyExoticComponent<JSXComponent>;
     name:string;
 }
 export const routes:Route[] = [
-    { to:'/home', path:'home', name:'Home' },
-    { to:'/about', path:'about', name:'About' },
-    { to:'/users', path:'users', name:'Users' },
+    { to:'/shopping', path:'shopping', Component:ShoppingPage, name:'Shopping' },
+    { to:'/about', path:'about', Component:About, name:'About' },
+    { to:'/users', path:'users', Component:Users, name:'Users' },
 ]
 
 
